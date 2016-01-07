@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>mypro</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 如果有乱码我们则需要配置字符编码集的过滤器来防止乱码问题 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.znie.mypro.util.LoaderListener</listener-class>
+	</listener>
+	<!-- spring IOC 配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- spring 配置 -->
+	<servlet>
+		<servlet-name>mypro</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 配置文件在class下 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:servlet.xml</param-value>
+		</init-param>
+		<!-- 配置文件在web -inf下 <load-on-startup>1</load-on-startup> <async-supported>true</async-supported> -->
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mypro</servlet-name>
+		<!-- <url-pattern>/</url-pattern> -->
+		<url-pattern>*.shtml</url-pattern>
+	</servlet-mapping>
+	<!-- spring 配置结束 -->
+
+	<!-- REST配置 -->
+	<servlet>
+		<servlet-name>jerseyServlet</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.znie.mypro.service.RestApp</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jerseyServlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	<!-- REST配置 结束 -->
+
+</web-app>
