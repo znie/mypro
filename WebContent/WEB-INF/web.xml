@@ -72,4 +72,18 @@
 	</servlet-mapping>
 	<!-- REST配置 结束 -->
 
+	<!-- servlet 配置 -->
+	<!-- 
+	@WebServlet
+	<servlet>
+		<servlet-name>testServlet</servlet-name>
+		<servlet-class>com.znie.mypro.servlet.TestServlet</servlet-class>
+		<load-on-startup>6</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testServlet</servlet-name>
+		<url-pattern>/testServlet</url-pattern>
+	</servlet-mapping>
+	-->
+	<!-- servlet 配置 -->
 </web-app>
