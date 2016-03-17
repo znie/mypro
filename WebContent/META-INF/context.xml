@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/mypro" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://222.240.205.112:3306/acxoa?useUnicode=true&characterEncoding=utf-8"
+		username="root" password="hechuangdefine2015#" maxActive="100" maxIdle="30"
+		maxWait="-1" />
+</Context>

@@ -1,0 +1,46 @@
+<html ng-app>
+<head>
+<title>angular</title>
+<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+<script type="text/javascript">
+	angular.module("ezstuff", [])//创建模块ezstuff
+	.directive("ezClock", function() {//在模块上注册指令ezClock的类工厂
+		return {
+			restrict : "E",
+			replace : true,
+			template : "<div class='clock'></div>",
+			link : function(scope, element, attrs) {
+				setInterval(function() {
+					//获取当前时间
+					var d = new Date();
+
+					//element对应引用该指令的DOM对象的jqLite封装
+					element.text(d.toString());
+				}, 1000);
+			}
+		}
+	})
+</script>
+<style>
+div.clock{
+	padding:10px;
+	margin: 0px auto;
+	width:400px;
+	background:#000;
+	color:#0f0;
+}	
+</style>
+</head>
+<body ng-app="ezstuff">
+	<h1>Hello world</h1>
+	Hello {{'World'}}!
+	<h1>Test2</h1>
+	Your name:
+	<input type="text" ng-model="yourname" placeholder="World">
+	<hr>
+	Hello {{yourname || 'World'}}!
+	<h1>时钟</h1>
+	<div class='clock'></div>
+</html>
+</body>
+</html>
