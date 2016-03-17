@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>jQuery.sheet - The Ajax Spreadsheet</title>
+    <script src="../bower_components/jquery-legacy/dist/jquery.js"></script>
+    <script src="../parser/formula/formula.js"></script>
+    <script src="../jquery.sheet.js"></script>
+    <script>
+        $.sheet.preLoad('../');
+        $(function() {
+            $('#sheetParent').sheet({
+	            initScrollRows: 20,
+	            initScrollCols: 10,
+	            loader: new Sheet.JSONLoader(
+		            //spreadsheets
+		            [
+			            //spreadsheet
+			            {
+				            title: 'Formula Torture Test',
+				            rows: [
+					            {
+						            columns: [
+							            {
+								            formula: "=Calc1!H247"
+							            }
+						            ]
+					            },
+					            {
+						            columns: [
+							            {
+								            formula: "Fac1Type"
+							            }
+						            ]
+					            },
+					            {
+						            columns: [
+							            {
+								            formula: "=DROPDOWN('Single \" \\' \\\" value',\\'Single ' Escaped \" Value\\', \"Double ' \\\" \\' Value\", \\\"Double \" Escaped \'Value'\\\")"
+							            }
+						            ]
+					            },
+					            {
+						            columns: [
+							            {
+								            formula: "Values!A1"
+							            }
+						            ]
+					            }
+				            ]
+			            },
+
+			            {
+				            title: 'Values',
+				            rows: [
+					            {
+						            columns: [
+							            {
+								            formula: "dropdown('No','Yes')",
+								            value: "No"
+							            }
+						            ]
+					            }
+				            ]
+			            }
+		            ]
+	            )
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="sheetParent" title="Cell Types"></div>
+</body>
+</html>
