@@ -3511,4 +3511,64 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
     client.georadiusByMember(key, member, radius, unit, param);
     return BuilderFactory.GEORADIUS_WITH_PARAMS_RESULT.build(client.getObjectMultiBulkReply());
   }
+
+@Override
+public List<byte[]> blpop(byte[] arg0) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public List<byte[]> brpop(byte[] arg0) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public Long getDB() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public ScanResult<String> scan(int arg0) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public List<String> blpop(String arg0) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public List<String> brpop(String arg0) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public ScanResult<Entry<String, String>> hscan(String arg0, int arg1) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public String set(String arg0, String arg1, String arg2, String arg3, long arg4) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public ScanResult<String> sscan(String arg0, int arg1) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public ScanResult<Tuple> zscan(String arg0, int arg1) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
